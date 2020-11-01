@@ -5,10 +5,10 @@ on: [pull_request]
 
 jobs:
   build:
-    name: Danger JS
+    name: Danger
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Danger
       uses: danger/swift@3.6.1
       env:
