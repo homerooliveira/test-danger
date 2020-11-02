@@ -8,6 +8,6 @@ modified_files = git.modified_files + git.added_files
 has_source_changes = !modified_files.grep(/Source/).empty?
 has_test_changes = !modified_files.grep(/Tests/).empty?
 
-if git.lines_of_code > 50 && has_app_changes && !has_test_changes
+if git.lines_of_code > 50 && has_source_changes && !has_test_changes
     warn 'This PR may need tests.'
 end
