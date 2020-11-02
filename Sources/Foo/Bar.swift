@@ -1,6 +1,6 @@
 import Foundation
 
-struct Bar{
+struct Bar {
     var foo: Foo
     var bar: String
 }
