@@ -1,0 +1,24 @@
+name: SwiftLint
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/swiftlint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Swiftlint
+        run: |
+          docker run \
+            --rm \
+            -v "$(PWD):$(PWD)" \
+            -w "$(PWD)" \
+            swift:5.2
+          bash -c 'curl --location --remote-name  https://github.com/realm/SwiftLint/releases/download/0.40.3/swiftlint_linux.zip'
+          bash -c 'unzip swiftlint_linux.zip'
+          bash -c './swiftlint --config .swiftlint.yml --reporter github-actions-logging'
