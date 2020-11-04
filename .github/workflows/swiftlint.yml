@@ -24,4 +24,4 @@ jobs:
             swift:5.2
           bash -c 'curl --location --remote-name  https://github.com/realm/SwiftLint/releases/download/0.40.3/swiftlint_linux.zip'
           bash -c 'unzip swiftlint_linux.zip'
-          bash -c './swiftlint --config .swiftlint.yml --reporter github-actions-logging
+          bash -c './swiftlint --config .swiftlint.yml --reporter github-actions-logging'
