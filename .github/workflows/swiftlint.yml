@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: GitHub Action for SwiftLint (Only files changed in the PR)
-        uses: norio-nomura/action-swiftlint@3.1.0
-        with:
-          args: --strict --config .swiftlint.yml
+      - name: Run Swiftlint
+        run: |
+          curl -LJO https://github.com/realm/SwiftLint/releases/download/0.40.3/swiftlint_linux.zip
+          unzip swiftlint_linux.zip
+          ./swiftlint --config .swiftlint.yml --reporter github-actions-logging
