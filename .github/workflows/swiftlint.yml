@@ -17,6 +17,9 @@ jobs:
         run: swift --version
       - name: Run Swiftlint
         run: |
+          touch /etc/ld.so.conf.d/swift.conf
+          echo "/usr/lib/swift/linux" >> /etc/ld.so.conf.d/swift.conf 
+          ldconfigx
           curl --location --remote-name  https://github.com/realm/SwiftLint/releases/download/0.40.3/swiftlint_linux.zip
           unzip swiftlint_linux.zip
           ./swiftlint --config .swiftlint.yml --reporter github-actions-logging
